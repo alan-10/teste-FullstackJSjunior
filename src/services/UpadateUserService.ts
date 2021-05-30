@@ -14,9 +14,7 @@ export class UpdateUserService {
   execute({ email, id, password }: Request): User {
     const users: User[] = readFile();
 
-    const verifyEmailUsed =  users.find(user => user.email === email);
-
- 
+    const verifyEmailUsed = users.find(user => user.email === email);
 
     const selectUserByIndex = users.findIndex(user => user.id == id);
 
@@ -33,8 +31,8 @@ export class UpdateUserService {
       password: password ? bcrypt.hashSync(password) : passwordCurrent,
     };
 
-    if ((!!verifyEmailUsed ) && (email !== emailCurrent)) {
-      //console.log(verifyEmailUsed.email)
+    if (!!verifyEmailUsed && email !== emailCurrent) {
+      
       throw new AppError('email alread exists', 404);
     }
 
