@@ -8,21 +8,18 @@ interface UserRepositoryDTO {
 }
 
 export class UserRepository {
-   create( newUser:UserRepositoryDTO){
-    
+  create(newUser: UserRepositoryDTO) {
     const currentContent = readFile();
     currentContent.push(newUser);
     writeFile(currentContent);
-
   }
 
-  listAll(){
-   const content = readFile();
-   return content;
+  listAll() {
+    const content = readFile();
+    return content;
   }
 
-  delliteAll(){
+  delliteAll() {
     writeFile([]);
   }
- 
 }

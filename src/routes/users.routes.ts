@@ -51,6 +51,7 @@ userRoutes.delete('/users/:id', (request, response) => {
   const { id } = request.params;
   const deliteUser = new DeleteOneUserService();
   deliteUser.execute(id);
+  return response.json({deleted: true})
 })
 
 

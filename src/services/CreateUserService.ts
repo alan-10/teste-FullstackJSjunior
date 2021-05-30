@@ -8,18 +8,17 @@ interface Request {
   password: string;
 }
 export class CreateUserService {
-  execute( { password, email }: Request): User{
-
+  execute({ password, email }: Request): User {
     const users: User[] = readFile();
 
     const userExists = users.find(user => user.email === email);
 
-    if(userExists){
+    if (userExists) {
       throw new AppError('users alread exists', 409);
     }
 
-    const newUser = new User({email, password})
-    const user = new UserRepository()
+    const newUser = new User({ email, password });
+    const user = new UserRepository();
     user.create(newUser);
     return newUser;
   }
