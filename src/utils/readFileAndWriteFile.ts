@@ -7,10 +7,10 @@ interface CurretContentDTO {
 }
 
 export function writeFile(currentContent: CurretContentDTO[]) {
-  fs.writeFileSync('./backend.json', JSON.stringify(currentContent), 'utf-8');
+  fs.writeFileSync('./src/database/backend.json', JSON.stringify(currentContent), 'utf-8');
 }
 
 export function readFile() {
-  const content = fs.readFileSync('./backend.json', 'utf-8');
+  const content = fs.readFileSync('./src/database/backend.json', 'utf-8');
   return JSON.parse(content);
 }
