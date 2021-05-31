@@ -2,7 +2,7 @@ import { response } from 'express';
 import request from 'supertest';
 import { app } from '../server';
 
-import { createDataBaseTest } from '../utils/createAndDeliteDatabaseTest';
+import { createDataBaseTest } from '../utils/createDatabaseTest';
 
 describe('User', () => {
   beforeAll(() => {

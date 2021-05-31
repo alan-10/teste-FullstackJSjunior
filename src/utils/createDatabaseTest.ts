@@ -32,9 +32,3 @@ export function createDataBaseTest(){
   });
 }
 
-export async function deliteDataBaseTest(){
-  const dataBaseTestExist = await  fs.promises.stat(newFile);
-  if(dataBaseTestExist) {
-    fs.promises.unlink(newFile);
-  }
-}
