@@ -33,7 +33,7 @@ export class UpdateUserService {
 
     if (!!verifyEmailUsed && email !== emailCurrent) {
       
-      throw new AppError('email alread exists', 404);
+      throw new AppError('email alread exists', 409);
     }
 
     users[selectUserByIndex] = userUpdated;

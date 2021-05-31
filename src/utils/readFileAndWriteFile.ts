@@ -6,11 +6,21 @@ interface CurretContentDTO {
   password: string;
 }
 
+const fileDatabase = './src/database/backend.json';
+const fileDatabaseTest = './src/database/dataTest.json';
+
 export function writeFile(currentContent: CurretContentDTO[]) {
-  fs.writeFileSync('./src/database/backend.json', JSON.stringify(currentContent), 'utf-8');
+  fs.writeFileSync(
+    process.env.NODE_ENV === 'test' ? fileDatabaseTest : fileDatabase,
+    JSON.stringify(currentContent),
+    'utf-8'
+  );
 }
 
 export function readFile() {
-  const content = fs.readFileSync('./src/database/backend.json', 'utf-8');
+  const content = fs.readFileSync(
+    process.env.NODE_ENV === 'test' ? fileDatabaseTest : fileDatabase,
+    'utf-8'
+  );
   return JSON.parse(content);
 }
