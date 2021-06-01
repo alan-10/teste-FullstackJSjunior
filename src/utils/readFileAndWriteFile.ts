@@ -6,8 +6,8 @@ interface CurretContentDTO {
   password: string;
 }
 
-const fileDatabase = './src/database/backend.json';
-const fileDatabaseTest = './src/database/dataTest.json';
+const fileDatabase = './src/database/database.json';
+const fileDatabaseTest = './src/database/databaseTest.json';
 
 export function writeFile(currentContent: CurretContentDTO[]) {
   fs.writeFileSync(

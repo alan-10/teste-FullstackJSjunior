@@ -3,7 +3,7 @@ import { resolve, join } from 'path';
 import { writeFile, readFile } from './readFileAndWriteFile';
 
 const filePath = resolve(__dirname, '..','database');
-const file = 'dataTest.json';
+const file = 'databaseTest.json';
 
 const newFile = join(filePath, file);
 const dataInitialONE = 
