@@ -1,9 +1,6 @@
-# Texte para a Contele
-## O projeto é fazer um CRUD salvano os dados em um arquivo .json.
-## O difencial foi 
-*  Tratativas de erros delicinha <3.
-* Testes de integração  
-*  Deixar o sistema pouco acoplado. 
+# Aplicando testes de Integração
+## O projeto é  um CRUD salvano os dados em um arquivo .json.
+
  
 ## Primeiros passsos
 * No seu diretório  que deseja  ter a aplicaçao digite o comando git clone https://github.com/alan-10/teste-FullstackJSjunior.git
