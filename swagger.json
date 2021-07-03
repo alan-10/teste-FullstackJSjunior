@@ -1,0 +1,203 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Crude com testes de integração",
+    "description": "Essa api tem como objtivo a manipulaçao de usuarios",
+    "contact": {
+      "email": "alanzinid@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333/api/v1",
+      "description": "api"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "sumary": "cadastro de usuário",
+        "description": "Essa rota será responsavél por cadastrar um novo usuário",
+        "tags": ["users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/users"
+              },
+              "examples": {
+                "users": {
+                  "value": {
+                    "email": "diniz23@gmail.com",
+                    "password": "12345"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "409": {
+            "description": " users alread exists"
+          },
+          "201": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type":"object",
+                  "$ref":"#/components/schemas/users"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/usersAll":{
+      "get": {
+        "sumary": "Listar Usuarios",
+        "description": "Esta sera responsavél por listar todos usuários",
+        "tags": ["users"],
+        "responses": {
+          "200": {
+            "description":"ok",
+            "content": {
+              "application/json": {
+                "schema":{
+                  "type":"object",
+                  "$ref": "#/components/schemas/users"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}":{
+      "get":{
+        "sumary":"listar um usuario",
+        "description":"Esta deve listar apenas um usuário",
+        "tags":["users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description":"Usuario pelo id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": " users alread exists"
+          },
+          "200": {
+            "description":"ok",
+            "content":{
+              "application/json": {
+                "schema":{
+                  "type":"object",
+                  "$ref":"#/components/schemas/users"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/userUpdate/{id}": {
+      "put":{
+        "sumary": "Atuazilar usuario",
+        "description": "Esta é reponsavel por auaizar os dados de um usuário",
+        "tags":["users"],
+        "parameters":[
+          {
+            "name": "id",
+            "in":"path",
+            "description": "id do usuario",
+            "required":true
+          }
+        ],
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref":"#/components/schemas/users"
+              }
+            }
+          }
+        },
+        "responses":{
+          "404":{
+            "description": " users alread exists"
+          },
+          "409":{
+            "description":"email alread exists"
+          },
+          "200":{
+            "description":"ok",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"object",
+                  "$ref": "#/components/schemas/users"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deliteUserById/{id}":{
+      "delete": {
+        "sumary": "Deletar usuario",
+        "description": "Esta deleta um usuário pelo ID",
+        "tags":["users"],
+        "parameters":[
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id para deleção do usuario",
+            "required": true
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":" users not exists"
+          },
+          "200":{
+            "description": "success, user alread deleted"
+          }
+        }
+      }
+    },
+    "/deleteAll/Users":{
+      "delete":{
+        "sumary":"Deletar todos usuários",
+        "description":"Esta deleta todos os usuários",
+        "tags":["users"],
+        "responses":{
+          "200":{
+            "description":"all users deleted"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "users": {
+        "type":"object",
+        "properties": {
+          "email": {
+            "type":"string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

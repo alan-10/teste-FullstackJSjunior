@@ -9,7 +9,7 @@ const userRoutes = Router();
 
 
 
-userRoutes.get('/users', (request, response) => {
+userRoutes.get('/usersAll', (request, response) => {
   const userRepository = new UserRepository();
   const users = userRepository.listAll();
   return response.status(200).json(users);
@@ -25,7 +25,7 @@ userRoutes.post('/users', (request, response) => {
 
 });
 
-userRoutes.put('/users/:id', (request, response) => {
+userRoutes.put('/userUpdate/:id', (request, response) => {
   const { id } = request.params;
   const { email, password  } = request.body;
   const userService = new UpdateUserService()
@@ -41,13 +41,13 @@ userRoutes.get('/users/:id', (request, response) => {
   return response.status(200).json(user);
 });
 
-userRoutes.delete('/users', (request, response) => {
+userRoutes.delete('/deleteAll/Users', (request, response) => {
   const userRepository = new UserRepository();
   userRepository.delliteAll();
   return response.status(200).json({deleteAll: true});
 });
 
-userRoutes.delete('/users/:id', (request, response) => {
+userRoutes.delete('/deliteUserById/:id', (request, response) => {
   const { id } = request.params;
   const deliteUser = new DeleteOneUserService();
   deliteUser.execute(id);
