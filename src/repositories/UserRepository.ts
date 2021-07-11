@@ -16,7 +16,7 @@ export class UserRepository {
 
   listAll() {
     const content = readFile();
-    return content;
+    return content;  
   }
 
   delliteAll() {
